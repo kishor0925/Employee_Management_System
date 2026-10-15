@@ -1,0 +1,717 @@
+
+/* Personal Details */
+
+.personal-details-heading {
+  margin-bottom: 20px;
+}
+
+.personal-details-heading h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.personal-details-heading p {
+  color: #666;
+  font-size: 14px;
+}
+
+.personal-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+
+.personal-details-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.personal-details-field label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.personal-details-field input,
+.personal-details-field select,
+.personal-details-field textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.personal-details-field input:focus,
+.personal-details-field select:focus,
+.personal-details-field textarea:focus {
+  outline: none;
+  border-color: #5684e8;
+}
+
+.personal-details-address {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+  .personal-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .personal-details-address {
+    grid-column: auto;
+  }
+}
+
+
+
+/* Education Details */
+
+.education-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.education-card {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.education-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.education-card-heading h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+
+.education-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.education-field label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.education-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.education-add,
+.education-remove {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.education-add {
+  background: #2563eb;
+  color: white;
+}
+
+.education-remove {
+  background: #dc3545;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Employment Details */
+.employment-heading {
+  margin-bottom: 20px;
+}
+
+.employment-heading h3 {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.employment-heading p {
+  color: #666;
+  font-size: 14px;
+}
+
+.employment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+
+.employment-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.employment-field label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.employment-field input,
+.employment-field select {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 14px;
+}
+
+.employment-field input:focus,
+.employment-field select:focus {
+  outline: none;
+  border-color: #5684e8;
+}
+
+@media (max-width: 600px) {
+  .employment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Experience Details */
+.experience-heading {
+  margin-bottom: 20px;
+}
+
+.experience-heading h3 {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.experience-heading p {
+  color: #666;
+  font-size: 14px;
+}
+
+.experience-card {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.experience-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.experience-card-heading h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+
+.experience-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.experience-field label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.experience-field input {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.experience-field input:focus {
+  outline: none;
+  border-color: #5684e8;
+}
+
+.experience-add,
+.experience-remove {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.experience-add {
+  background: #2563eb;
+  color: white;
+}
+
+.experience-remove {
+  background: #dc3545;
+  color: white;
+}
+.common-heading{
+  margin-bottom: 15px;
+  text-transform: uppercase;
+
+}
+@media (max-width: 600px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Internship Details */
+.internship-heading {
+  margin-bottom: 20px;
+}
+
+.internship-heading h3 {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.internship-heading p {
+  color: #666;
+  font-size: 14px;
+}
+
+.internship-card {
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.internship-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.internship-card-heading h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.internship-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+
+.internship-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.internship-field label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.internship-field input {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.internship-field input:focus {
+  outline: none;
+  border-color: #5684e8;
+}
+
+.internship-add,
+.internship-remove {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.internship-add {
+  background: #2563eb;
+  color: white;
+}
+
+.internship-remove {
+  background: #dc3545;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .internship-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Role Details */
+.role-heading {
+  margin-bottom: 20px;
+}
+
+.role-heading h3 {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.role-heading p {
+  color: #666;
+  font-size: 14px;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+
+.role-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.role-field label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.role-field input {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.role-field input:focus {
+  outline: none;
+  border-color: #5684e8;
+}
+
+@media (max-width: 600px) {
+  .role-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Work Schedule */
+.schedule-heading {
+  margin-bottom: 20px;
+}
+
+.schedule-heading h3 {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.schedule-heading p {
+  color: #666;
+  font-size: 14px;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+
+.schedule-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.schedule-field label,
+.schedule-days-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.schedule-field input {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.schedule-field input:focus {
+  outline: none;
+  border-color: #5684e8;
+}
+
+.schedule-days {
+  margin-top: 24px;
+}
+
+.schedule-days-label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.schedule-days-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.schedule-day {
+  display: flex;  
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.schedule-day input,
+.schedule-day label {
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Payroll Details */
+.payroll-heading {
+  margin-bottom: 20px;
+}
+
+.payroll-heading h3 {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.payroll-heading p {
+  color: #666;
+  font-size: 14px;
+}
+
+.payroll-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+  margin-top: 18px;
+}
+
+.payroll-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+  min-width: 0;
+}
+
+.payroll-field label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.payroll-field input,
+.payroll-field select {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 14px;
+}
+
+.payroll-field input:focus,
+.payroll-field select:focus {
+  outline: none;
+  border-color: #5684e8;
+}
+
+@media (max-width: 600px) {
+  .payroll-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* Profile Page */
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
+}
+
+/* Fixed Form Size */
+.profile-form {
+  width: 900px;
+  height: 600px;
+  max-width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.profile-header {
+  flex-shrink: 0;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-header h3 {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.profile-header p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  margin-left: 25px;
+}
+
+/* Scrollable Form Content */
+.profile-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+/* Navigation Buttons */
+.profile-footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.profile-message {
+  flex-shrink: 0;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profile-page {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .profile-form {
+    height: 650px;
+    padding: 16px;
+  }
+}
+
+.profile-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #dee2e6;
+}
+
+.Previous-button,
+.Next-button,
+.Submit-button {
+  padding: 12px 24px;
+  border: 1px solid #212529;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.Previous-button {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+.Next-button,
+.Submit-button {
+  background-color: #212529;
+  color: #ffffff;
+}
+
+.Previous-button:hover {
+  background-color: #f1f3f5;
+}
+
+.Next-button:hover,
+.Submit-button:hover {
+  background-color: #343a40;
+}
+
+.Previous-button:disabled,
+.Next-button:disabled,
+.Submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
