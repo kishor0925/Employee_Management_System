@@ -8,7 +8,7 @@ export class EmployeeController {
 
   @Post("/onboard")
   @HttpCode(201)
-  async createEmployee(@Body() data: any) {
+  async createEmployee(@Body({ options: { limit: "10mb" } }) data: any) {
     try {
       const result = await this.employeeService.createEmployee(data);
 

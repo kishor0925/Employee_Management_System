@@ -46,7 +46,6 @@ function EmployeeDetails() {
     { label: "Blood Group", value: employee.blood_group },
     { label: "Address", value: employee.address },
   ];
-
   // Employment Details
   const employmentDetails = [
     { label: "Employment Type", value: "employment_type" },
@@ -124,10 +123,28 @@ function EmployeeDetails() {
         </div>
 
         <div className="card-body">
+          <div className="mb-3">
+            <strong>Profile Image:</strong>
+            <br />
+
+            {employee.profile_image ? (
+              <img
+                src={employee.profile_image}
+                alt={employee.full_name}
+                width="120"
+                height="120"
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                }}
+              />
+            ) : (
+              <p>Image not provided</p>
+            )}
+          </div>
           {personalDetails.map((item) => (
             <p key={item.label}>
-              <strong>{item.label}:</strong>{" "}
-              {item.value || "Not provided"}
+              <strong>{item.label}:</strong> {item.value || "Not provided"}
             </p>
           ))}
         </div>
@@ -175,7 +192,7 @@ function EmployeeDetails() {
                 ))}
               </div>
             ))
-          ) : (
+          ):(
             <p>No education details available</p>
           )}
         </div>
@@ -223,7 +240,7 @@ function EmployeeDetails() {
                 ))}
               </div>
             ))
-          ) : (
+          ):(
             <p>No internship details available</p>
           )}
         </div>
@@ -270,7 +287,7 @@ function EmployeeDetails() {
                     <strong>{field.label}:</strong>{" "}
                     {Array.isArray(item[field.value])
                       ? item[field.value].join(", ")
-                      : item[field.value] ?? "Not provided"}
+                      : (item[field.value] ?? "Not provided")}
                   </p>
                 ))}
               </div>

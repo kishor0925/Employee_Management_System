@@ -1,6 +1,21 @@
 import { pool } from "../db/dbconnect";
-
+import axios from "axios"
 export class EmployeeService {
+
+  async uploadImage(image : string){
+    const apikey = process.env.IMGBB_API_KEY;
+
+    const formData = new FormData();
+    formData.append("image", image.split(",")[1]);
+
+    const response = await axios.post(
+      `https://api.imgbb.com/1/upload?key=${apikey}`,
+      formData
+    );
+
+    return response.data.data.url;
+
+  }
   async createEmployee(data: any) {
     const {
       employee,
@@ -16,6 +31,7 @@ export class EmployeeService {
     if (!employee?.full_name || !employee?.email) {
       throw new Error("Full name and email are required");
     }
+    const imageUrl = employee.profile_image ? await this.uploadImage(employee.profile_image) : null;
 
     const client = await pool.connect();
 
@@ -36,7 +52,7 @@ export class EmployeeService {
           employee.gender || null,
           employee.blood_group || null,
           employee.address || null,
-          employee.profile_image || null,
+          imageUrl,
           employee.status || "Active",
         ],
       );

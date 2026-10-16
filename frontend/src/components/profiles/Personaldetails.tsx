@@ -14,6 +14,7 @@ function PersonalDetails() {
     { label: "Email Address", name: "email", type: "email" },
     { label: "Phone Number", name: "phone", type: "tel" },
     { label: "Date of Birth", name: "date_of_birth", type: "date" },
+    { label: "Profile Image", name : "profile_image", type : "file"}
   ] as const;
 
   const handleChange = (
@@ -27,6 +28,23 @@ function PersonalDetails() {
     );
   };
 
+  const handleImageChange = (e : ChangeEvent<HTMLInputElement>) => {
+
+    const file = e.target.files?.[0];
+    if(!file) return;
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      dispatch(
+        setEmployeeField({
+          name : "profile_image",
+          value : reader.result
+        })
+      )
+    }
+    reader.readAsDataURL(file);
+
+  }
   return (
     <div className="personal-details">
       <div className="common-heading">
@@ -39,13 +57,22 @@ function PersonalDetails() {
         {fields.map((field) => (
           <div className="personal-details-field" key={field.name}>
             <label htmlFor={field.name}>{field.label}</label>
+            {field.type === "file" ? (
+              <input
+                id={field.name}
+                name={field.name}
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                onChange={handleImageChange}
+              />
+            ) : (
             <Input
               id={field.name}
               name={field.name}
               type={field.type}
               value={employee[field.name] || ""}
               onChange={handleChange}
-            />
+            />)}
           </div>
         ))}
 
