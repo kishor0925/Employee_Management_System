@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../redux/store";
 import { deleteEmployeeById, getEmployees } from "../redux/employeeSlice";
 import { useNavigate } from "react-router-dom";
+import "../styles/CompanyMembers.css";
+
 function CompanyMembers() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -17,42 +19,60 @@ function CompanyMembers() {
 
   if (loading) return <p>Loading employees...</p>;
   if (error) return <p>{error}</p>;
+
   return (
-    <div className="container-fluid p-4 w-100">
-      <h2 className="mb-4">Company Members</h2>
+    <div className="container-fluid p-4 company-members">
+      <div className="members-heading mb-4">
+        <h2>Company Members</h2>
+        <p>View and manage your team members</p>
+      </div>
 
-      <div className="row w-100">
+      <div className="row g-4">
         {employees.map((employee: any) => (
-          <div className="col-12 col-md-6 col-lg-4 mb-3" key={employee.id}>
-            <div className="card w-100 h-100">
+          <div className="col-12 col-md-6 col-xl-4" key={employee.id}>
+            <div className="card employee-card h-100">
               <div className="card-body">
-                <h5 className="card-title">{employee.full_name}</h5>
-                <p className="card-text">{employee.email}</p>
-                <p className="card-text">
-                  {employee.department || "Not assigned"}
-                </p>
-                <p className="card-text">
-                  {employee.designation || "Not assigned"}
-                </p>
+                <div className="employee-profile">
+                  <div>
+                    <img
+                    src={employee.profile_image}
+                    alt={employee.full_name}
+                    className="employee-image"
+                  />
+                  </div>
+                            
+                   <div>
+                    <h5>{employee.full_name}</h5>
+                    <p>{employee.designation || "Designation not assigned"}</p>
+                     <div>
+                    <p>{employee.email}</p>
+                  </div>
+                  </div>
+                </div>
+                <div className="employee-actions">
+                  <button
+                    className="view-btn"
+                    onClick={() => navigate(`/EmployeeDetails/${employee.id}`)}
+                  >
+                    View Profile
+                  </button>
 
-                <button
-                  className="btn btn-primary"
-                  onClick={() => navigate(`/EmployeeDetails/${employee.id}`)}
-                >
-                  View
-                </button>
-
-                <button
-                  className="btn btn-danger"
-                  onClick={() => dispatch(deleteEmployeeById(employee.id))}
-                >
-                  Delete
-                </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => dispatch(deleteEmployeeById(employee.id))}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      {employees.length === 0 && (
+        <p className="text-muted mt-4">No employees found.</p>
+      )}
     </div>
   );
 }
