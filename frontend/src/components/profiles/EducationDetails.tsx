@@ -12,7 +12,6 @@ function EducationDetails() {
   const fields = [
     { label: "College / University", name: "college_university", type: "text" },
     { label: "Degree", name: "degree", type: "text" },
-    { label: "Field of Study", name: "field_of_study", type: "text" },
     { label: "Graduation Year", name: "graduation_year", type: "number" },
     { label: "Education Level", name: "education_level", type: "text" },
   ] as const;
@@ -35,7 +34,6 @@ function EducationDetails() {
         {
           college_university: "",
           degree: "",
-          field_of_study: "",
           graduation_year: "",
           education_level: "",
         },

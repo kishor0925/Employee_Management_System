@@ -45,9 +45,16 @@ class GetEmployeeService {
       pool.query("SELECT * FROM employment_details WHERE employee_id = $1", [
         id,
       ]),
-      pool.query("SELECT * FROM employee_education WHERE employee_id = $1", [
-        id,
-      ]),
+      pool.query(
+        `SELECT
+      education_level,
+      course_name AS degree,
+      institution_name AS college_university,
+      completion_year AS graduation_year
+     FROM employee_education
+     WHERE employee_id = $1`,
+        [id],
+      ),
       pool.query("SELECT * FROM employee_experience WHERE employee_id = $1", [
         id,
       ]),
@@ -58,7 +65,6 @@ class GetEmployeeService {
       pool.query("SELECT * FROM work_schedules WHERE employee_id = $1", [id]),
       pool.query("SELECT * FROM payroll_configs WHERE employee_id = $1", [id]),
     ]);
-
     return {
       ...employee,
       employment_details: employment.rows,

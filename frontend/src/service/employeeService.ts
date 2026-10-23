@@ -18,7 +18,10 @@ export const getEmployeeId = async(id : number) => {
   const response = await axios.get(`${API_URL}/${id}`);
   return response.data;
 }
-
+export const updateEmployee = async (id: number, data: any) => {
+  const response = await axios.put(`${API_URL}/${id}`, data);
+  return response.data;
+};
 export const DeleteEmployee = async(id :  number) => {
   const  response  =  await axios.delete(`${API_URL}/${id}`);
   return response.data;

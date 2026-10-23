@@ -4,6 +4,7 @@ import express from "express";
 import { useExpressServer } from "routing-controllers";
 import { EmployeeController } from "./controllers/EmployeeController";
 import { GetEmployeeController } from "./controllers/GetEmployeeController";
+import { UpdateEmployeeController } from "./controllers/UpdateEmployeeController";
 
 const app = express();
 
@@ -11,7 +12,7 @@ const app = express();
 // app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 useExpressServer(app, {
-  controllers: [EmployeeController, GetEmployeeController],
+  controllers: [EmployeeController, GetEmployeeController, UpdateEmployeeController],
   cors: {
     origin: "http://localhost:5173",
   },

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEmployeeId } from "../service/employeeService";
+import '../styles/EmployeeDetails.css';
 
 function EmployeeDetails() {
   const { id } = useParams();
@@ -28,7 +29,7 @@ function EmployeeDetails() {
   }
 
   if (error) {
-    return <p className="text-danger">{error}</p>;
+    return <p className="employee-error">{error}</p>;
   }
 
   if (!employee) {
@@ -46,6 +47,7 @@ function EmployeeDetails() {
     { label: "Blood Group", value: employee.blood_group },
     { label: "Address", value: employee.address },
   ];
+
   // Employment Details
   const employmentDetails = [
     { label: "Employment Type", value: "employment_type" },
@@ -108,22 +110,22 @@ function EmployeeDetails() {
   ];
 
   return (
-    <div className="container-fluid p-4">
+    <div className="employee-details-container">
       <button
-        className="btn btn-secondary mb-4"
+        className="employee-back-button"
         onClick={() => navigate("/companymembers")}
       >
         Back
       </button>
 
       {/* Personal Information */}
-      <div className="card mb-4">
-        <div className="card-header">
+      <div className="employee-personal-card">
+        <div className="employee-card-header">
           <h5>Personal Information</h5>
         </div>
 
-        <div className="card-body">
-          <div className="mb-3">
+        <div className="employee-card-body">
+          <div className="employee-image-section">
             <strong>Profile Image:</strong>
             <br />
 
@@ -131,6 +133,7 @@ function EmployeeDetails() {
               <img
                 src={employee.profile_image}
                 alt={employee.full_name}
+                className="employee-detail-image"
                 width="120"
                 height="120"
                 style={{
@@ -142,8 +145,9 @@ function EmployeeDetails() {
               <p>Image not provided</p>
             )}
           </div>
+
           {personalDetails.map((item) => (
-            <p key={item.label}>
+            <p key={item.label} className="employee-detail-item">
               <strong>{item.label}:</strong> {item.value || "Not provided"}
             </p>
           ))}
@@ -151,17 +155,17 @@ function EmployeeDetails() {
       </div>
 
       {/* Employment Details */}
-      <div className="card mb-4">
-        <div className="card-header">
+      <div className="employee-employment-card">
+        <div className="employee-card-header">
           <h5>Employment Details</h5>
         </div>
 
-        <div className="card-body">
+        <div className="employee-card-body">
           {employee.employment_details?.length > 0 ? (
             employee.employment_details.map((item: any) => (
               <div key={item.id}>
                 {employmentDetails.map((field) => (
-                  <p key={field.value}>
+                  <p key={field.value} className="employee-detail-item">
                     <strong>{field.label}:</strong>{" "}
                     {item[field.value] || "Not provided"}
                   </p>
@@ -175,41 +179,41 @@ function EmployeeDetails() {
       </div>
 
       {/* Education */}
-      <div className="card mb-4">
-        <div className="card-header">
+      <div className="employee-education-card">
+        <div className="employee-card-header">
           <h5>Education</h5>
         </div>
 
-        <div className="card-body">
+        <div className="employee-card-body">
           {employee.education?.length > 0 ? (
             employee.education.map((item: any) => (
               <div key={item.id}>
                 {educationDetails.map((field) => (
-                  <p key={field.value}>
+                  <p key={field.value} className="employee-detail-item">
                     <strong>{field.label}:</strong>{" "}
                     {item[field.value] || "Not provided"}
                   </p>
                 ))}
               </div>
             ))
-          ):(
+          ) : (
             <p>No education details available</p>
           )}
         </div>
       </div>
 
       {/* Previous Experience */}
-      <div className="card mb-4">
-        <div className="card-header">
+      <div className="employee-experience-card">
+        <div className="employee-card-header">
           <h5>Previous Experience</h5>
         </div>
 
-        <div className="card-body">
+        <div className="employee-card-body">
           {employee.experience?.length > 0 ? (
             employee.experience.map((item: any) => (
               <div key={item.id}>
                 {experienceDetails.map((field) => (
-                  <p key={field.value}>
+                  <p key={field.value} className="employee-detail-item">
                     <strong>{field.label}:</strong>{" "}
                     {item[field.value] ?? "Not provided"}
                   </p>
@@ -223,41 +227,41 @@ function EmployeeDetails() {
       </div>
 
       {/* Internships */}
-      <div className="card mb-4">
-        <div className="card-header">
+      <div className="employee-internship-card">
+        <div className="employee-card-header">
           <h5>Internships</h5>
         </div>
 
-        <div className="card-body">
+        <div className="employee-card-body">
           {employee.internships?.length > 0 ? (
             employee.internships.map((item: any) => (
               <div key={item.id}>
                 {internshipDetails.map((field) => (
-                  <p key={field.value}>
+                  <p key={field.value} className="employee-detail-item">
                     <strong>{field.label}:</strong>{" "}
                     {item[field.value] || "Not provided"}
                   </p>
                 ))}
               </div>
             ))
-          ):(
+          ) : (
             <p>No internship details available</p>
           )}
         </div>
       </div>
 
       {/* Role and Skills */}
-      <div className="card mb-4">
-        <div className="card-header">
+      <div className="employee-role-card">
+        <div className="employee-card-header">
           <h5>Role and Skills</h5>
         </div>
 
-        <div className="card-body">
+        <div className="employee-card-body">
           {employee.roles?.length > 0 ? (
             employee.roles.map((item: any) => (
               <div key={item.id}>
                 {roleDetails.map((field) => (
-                  <p key={field.value}>
+                  <p key={field.value} className="employee-detail-item">
                     <strong>{field.label}:</strong>{" "}
                     {Array.isArray(item[field.value])
                       ? item[field.value].join(", ")
@@ -273,17 +277,17 @@ function EmployeeDetails() {
       </div>
 
       {/* Work Schedule */}
-      <div className="card mb-4">
-        <div className="card-header">
+      <div className="employee-schedule-card">
+        <div className="employee-card-header">
           <h5>Work Schedule</h5>
         </div>
 
-        <div className="card-body">
+        <div className="employee-card-body">
           {employee.work_schedules?.length > 0 ? (
             employee.work_schedules.map((item: any) => (
               <div key={item.id}>
                 {scheduleDetails.map((field) => (
-                  <p key={field.value}>
+                  <p key={field.value} className="employee-detail-item">
                     <strong>{field.label}:</strong>{" "}
                     {Array.isArray(item[field.value])
                       ? item[field.value].join(", ")
@@ -299,17 +303,17 @@ function EmployeeDetails() {
       </div>
 
       {/* Payroll Information */}
-      <div className="card mb-4">
-        <div className="card-header">
+      <div className="employee-payroll-card">
+        <div className="employee-card-header">
           <h5>Payroll Information</h5>
         </div>
 
-        <div className="card-body">
+        <div className="employee-card-body">
           {employee.payroll_configs?.length > 0 ? (
             employee.payroll_configs.map((item: any) => (
               <div key={item.id}>
                 {payrollDetails.map((field) => (
-                  <p key={field.value}>
+                  <p key={field.value} className="employee-detail-item">
                     <strong>{field.label}:</strong>{" "}
                     {item[field.value] ?? "Not provided"}
                   </p>

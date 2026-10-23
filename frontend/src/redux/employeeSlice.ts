@@ -26,6 +26,20 @@ export const getEmployees = createAsyncThunk(
     }
   },
 );
+
+export const updateEmployeeById = createAsyncThunk(
+  "employee/updateEmployeeById",
+  async ({ id, data }: { id: number; data: any }, { rejectWithValue }) => {
+    try {
+      return await employeeService.updateEmployee(id, data);
+    } catch (error: any) {
+      return rejectWithValue(
+        error.response?.data?.message || "Employee update failed",
+      );
+    }
+  },
+);
+
 export const deleteEmployeeById = createAsyncThunk(
   "employees/deleteEmployee",
   async (id: number) => {
@@ -167,6 +181,22 @@ const employeeSlice = createSlice({
         state.employees = state.employees.filter(
           (employee) => employee.id !== action.payload,
         );
+      })
+
+      .addCase(updateEmployeeById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.success = false;
+      })
+
+      .addCase(updateEmployeeById.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+
+      .addCase(updateEmployeeById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
       });
   },
 });
